@@ -1,0 +1,17 @@
+version: '3.3'
+volumes:
+  docker_jenkins: {}
+
+services:
+  jenkins:
+    image: jenkins/jenkins:latest
+    deploy:
+      replicas: 2
+      resources:
+        reservations:
+          cpus: 2
+          memory: 2048G
+    volumes:
+    - docker_jenkins:/
+    ports:
+    - "80:80"
