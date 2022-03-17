@@ -16,8 +16,9 @@ services:
       placement:
         constraints:
         - "node.role==worker"
-    volumes:
-    - docker_jenkins:/
     ports:
     - "8080:8080"
+    - "5080:5080"
+    volumes:
+    - docker_jenkins:/var/jenkins_home
 
