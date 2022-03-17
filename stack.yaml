@@ -11,7 +11,13 @@ services:
         reservations:
           cpus: 2
           memory: 2048G
+      restart_policy:
+        condition: on-failure
+      placement:
+        constraints:
+        - "node.role==worker"
     volumes:
     - docker_jenkins:/
     ports:
-    - "80:80"
+    - "8080:8080"
+
