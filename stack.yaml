@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3'
 volumes:
   docker_jenkins: {}
 
@@ -15,10 +15,9 @@ services:
         condition: on-failure
       placement:
         constraints:
-        - "node.role==worker"
+        - 'node.labels.role==worker'
     ports:
     - "8080:8080"
-    - "5080:5080"
     volumes:
     - docker_jenkins:/var/jenkins_home
 
