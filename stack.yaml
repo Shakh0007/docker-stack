@@ -1,4 +1,4 @@
-version: '3'
+version: '3.3'
 volumes:
   docker_jenkins: {}
 
@@ -6,16 +6,17 @@ services:
   jenkins:
     image: jenkins/jenkins:latest
     deploy:
-      replicas: 2
+      mode: replicated
+      replicas: 1
       resources:
         reservations:
-          cpus: 2
+          cpus: '2'
           memory: 2048G
       restart_policy:
         condition: on-failure
       placement:
         constraints:
-        - 'node.labels.role==worker'
+        - node.labels.role == worker
     ports:
     - "8080:8080"
     volumes:
